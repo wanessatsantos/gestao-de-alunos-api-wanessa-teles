@@ -11,7 +11,7 @@ describe('Login', () => {
         token = await getToken('admin@escola.com', 'admin123');
     });
 
-    it('deve cadastrar um aluno quando ele informa dados válidos', async () => {
+    it('Deve cadastrar um aluno quando ele informa dados válidos', async () => {
         
         //Cadastrar um aluno
         const cadastroAlunoResposta = await request('http://localhost:3000')
@@ -25,6 +25,8 @@ describe('Login', () => {
                       'senha': 'aluno238' 
             });
 
+        
+
         //Validar que o aluno foi cadastrado
             expect(cadastroAlunoResposta.status).to.equal(201);
             expect(cadastroAlunoResposta.body.nome).to.equal('Park Jimin');
@@ -33,7 +35,7 @@ describe('Login', () => {
 
     });
 
-    it.only('deve negar o cadastro de uma aluno que já existe', async () => {
+    it('deve negar o cadastro de uma aluno que já existe', async () => {
        
         //Cadastrar um aluno
         const cadastroAlunoResposta = await request('http://localhost:3000')
@@ -46,6 +48,7 @@ describe('Login', () => {
                          matricula: '2024001', 
                          senha: '123456'
             });
+            
 
         //Validar que o aluno foi cadastrado
             expect(cadastroAlunoResposta.status).to.equal(409);

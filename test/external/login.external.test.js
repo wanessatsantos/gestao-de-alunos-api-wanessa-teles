@@ -7,7 +7,10 @@ describe('Login', () => {
         const loginResposta = await request('http://localhost:3000')
             .post('/api/auth/login')
             .set('Content-Type', 'application/json')
-            .send({ 'email': 'admin@escola.com', 'senha': 'admin123' });
+            .send({ 
+                    email: 'admin@escola.com',
+                    senha: 'admin123' 
+                });
         
         expect(loginResposta.status).to.equal(200);
     });
@@ -16,10 +19,10 @@ describe('Login', () => {
         const loginResposta = await request('http://localhost:3000')
             .post('/api/auth/login')
             .set('Content-Type', 'application/json')
-            .send(
-                    { 'email': 'admin@escola.com', 
-                      'senha': '' }
-                );
+            .send({
+                    email: 'admin@escola.com', 
+                    senha: '' 
+            });
         
         expect(loginResposta.status).to.equal(400);
     });
@@ -28,10 +31,10 @@ describe('Login', () => {
         const loginResposta = await request('http://localhost:3000')
             .post('/api/auth/login')
             .set('Content-Type', 'application/json')
-            .send(
-                    { 'email': 'admin@escola.com', 
-                      'senha': 'admin1233' }
-                );
+            .send({
+                     email: 'admin@escola.com', 
+                     senha: 'admin1233' 
+            });
         
         expect(loginResposta.status).to.equal(401);
     });
