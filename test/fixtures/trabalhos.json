@@ -1,0 +1,14 @@
+[
+  {
+	"titulo": "Implementação de um sistema de recomendação de filmes",
+	"descricao": "Desenvolver um sistema de recomendação de filmes usando técnicas de aprendizado de máquina, como filtragem colaborativa e análise de sentimentos.",
+	"statusCodeEsperado": 201
+  },
+
+  {
+	"titulo": "Sistema Distribuidos Avançados",
+	"descricao": "Desenvolver um sistema distribuído avançado com foco em escalabilidade e desempenho.",
+	"statusCodeEsperado": 201
+	
+  }
+]

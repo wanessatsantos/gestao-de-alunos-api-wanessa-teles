@@ -3,19 +3,26 @@ import 'dotenv/config';
 import {api} from './api.js';
 
 
-export async function getToken(emailUser, senhaUser) {
+//Logim como aluno e retornando o token de autenticação
+export async function comTokenDeAluno(emailUser, senhaUser) {
 
-    const loginResposta = await request('http://localhost:3000')
+    const loginResposta = await api()
         .post('/api/auth/login')
         .set('Content-Type', 'application/json')
         .send(
                 { email: emailUser, 
                   senha: senhaUser }
         );
-    
-    return loginResposta.body.token;
+
+    const token = loginResposta.body.token;
+    if (loginResposta.status !== 200 || !token) {
+        throw new Error(`Falha no login do aluno: ${loginResposta.body.error || `status ${loginResposta.status}`}`);
+    }
+
+    return `Bearer ${token}`;
 }
 
+//Login como admin e retornando o token de autenticação
 let tokenEmCache = null;
 
 export async function comTokenDeAdmin(){
